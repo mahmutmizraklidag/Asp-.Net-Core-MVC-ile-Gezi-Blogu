@@ -3,6 +3,22 @@
 *@
 @{
 }
-<h1>
+
+<h1 class="text-center">
     Admin Ana Ekranı
 </h1>
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12 mt-3 border rounded btn btn-primary">
+            <a class="nav-link text-white text-center" asp-area="Admin" asp-controller="Users" asp-action="Index">Kullanıcı Yönetimi</a>
+        </div>
+        <div class="col-lg-12 mt-3 border rounded btn btn-warning">
+            <a class="nav-link text-white text-center" asp-area="Admin" asp-controller="Posts" asp-action="Index">İçerik Yönetimi</a>
+        </div>
+        <div class="col-lg-12 mt-3 border rounded btn btn-danger">
+            <a class="nav-link text-white text-center" asp-area="Admin" asp-controller="Categories" asp-action="Index">Kategori Yönetimi</a>
+        </div>
+    </div>
+</div>
+

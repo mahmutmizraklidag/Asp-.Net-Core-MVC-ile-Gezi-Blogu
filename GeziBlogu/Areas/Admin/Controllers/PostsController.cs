@@ -1,5 +1,6 @@
 ﻿using GeziBlogu.Data;
 using GeziBlogu.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeziBlogu.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class PostsController : Controller
     {
         private readonly DatabaseContext _context;

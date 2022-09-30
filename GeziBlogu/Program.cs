@@ -1,4 +1,5 @@
 using GeziBlogu.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace GeziBlogu
 {
@@ -11,6 +12,12 @@ namespace GeziBlogu
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<DatabaseContext>();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(u =>
+            {
+                u.LoginPath = "/Admin/Login";
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,7 +32,7 @@ namespace GeziBlogu
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllerRoute(
            name: "admin",
