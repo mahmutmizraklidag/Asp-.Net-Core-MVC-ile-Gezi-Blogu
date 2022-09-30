@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Admin Giriş</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/AdminLogin.css" asp-append-version="true" />
 </head>
 <body>
 
@@ -18,8 +19,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 m-auto mt-5 pt-5 border rounded bg-light p-5">
-                <h4>Admin Giriş</h4>
-                <hr />
+                <h4 class="text-center">Admin Giriş</h4>
+                <hr  />
                 <form asp-action="Index">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -34,8 +35,9 @@
                         <span asp-validation-for="password" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group d-grid gap-2">
                         <input type="submit" value="Giriş" class="btn btn-lg btn-primary mt-2" />
+                       
                     </div>
                 </form>
             </div>
