@@ -1,15 +1,16 @@
-﻿@model IEnumerable<Post>
-
+﻿@model Category
 @{
-    ViewData["Title"] = "Anasayfa";
+    ViewData["Title"] = Model.Name;
 }
+
+<h1>@Model.Name</h1>
 
 <div class="album py-5 bg-light">
     <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Posts)
             {
                 <div class="col">
                     <div class="card shadow-sm">
@@ -19,7 +20,7 @@
                             <p class="card-text">@item.Title</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detay</button>
+                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Categories" asp-action="Details" asp-route-id=@item.Id>Detay</a>
                                 </div>
                                 <small class="text-muted">@item.CreateDate.ToString()</small>
                             </div>

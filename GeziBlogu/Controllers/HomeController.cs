@@ -1,5 +1,7 @@
-﻿using GeziBlogu.Models;
+﻿using GeziBlogu.Data;
+using GeziBlogu.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace GeziBlogu.Controllers
@@ -7,15 +9,17 @@ namespace GeziBlogu.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly DatabaseContext _context;
+        public HomeController(ILogger<HomeController> logger, DatabaseContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            var model = await _context.Posts.Where(p => p.IsActive && p.IsHome).ToListAsync();
+            return View(model);
         }
 
         public IActionResult Privacy()
