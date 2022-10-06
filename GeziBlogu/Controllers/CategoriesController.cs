@@ -20,11 +20,6 @@ namespace GeziBlogu.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            //var model = await _context.Categories.FindAsync(id);
-            var model = await _context.Posts.FindAsync(id);
-            return View(model);
-        }
+       
     }
 }

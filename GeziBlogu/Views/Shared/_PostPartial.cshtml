@@ -1,0 +1,27 @@
+﻿@model Post
+
+<div class="col">
+    <div class="card shadow-sm">
+        <a href="/Posts/Detail/@Model.Id">
+            <img src="/img/@Model.Image" alt="@Model.Title" title="@Model.Title" class="img-fluid" />
+        </a>
+        <div class="card-body">
+            <h4 class="card-text">@Model.Category.Name - @Model.Title</h4>
+            <div class="d-flex justify-content-between align-items-center">
+                
+               <small class="text-muted">@String.Format("{0:d}",Model.CreateDate)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

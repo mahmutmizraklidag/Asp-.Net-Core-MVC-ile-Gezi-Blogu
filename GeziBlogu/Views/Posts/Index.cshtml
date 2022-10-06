@@ -1,20 +1,16 @@
-﻿@model HomePageViewModel
-
+﻿@model IEnumerable<Post>
 @{
-    ViewData["Title"] = "Anasayfa";
+    ViewData["Title"] = "Arama Sonuçları";
 }
 
-@await Html.PartialAsync("_SliderPartial",Model.Sliders)
+<h1>Arama Sonuçları</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Gezi Bloğu</h1>
-</div>
 <div class="album py-5 bg-light">
     <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            @foreach (Post item in Model.Posts)
+            @foreach (Post item in Model)
             {
                 @await Html.PartialAsync("_BlogPartial",item)
             }

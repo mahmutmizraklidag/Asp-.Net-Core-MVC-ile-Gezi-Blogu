@@ -12,23 +12,16 @@
 
             @foreach (var item in Model.Posts)
             {
-                <div class="col">
-                    <div class="card shadow-sm">
-                   
-                        <img src="/img/@item.Image" alt="@item.Title" title="@item.Title" class="img-fluid"/>
-                        <div class="card-body">
-                            <p class="card-text">@item.Title</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Categories" asp-action="Details" asp-route-id=@item.Id>Detay</a>
-                                </div>
-                                <small class="text-muted">@item.CreateDate.ToString()</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                if (item.IsActive)
+                {
+                     @await Html.PartialAsync("_PostPartial",item)
+                }
+              
             }
 
         </div>
     </div>
 </div>
+
+
+                            @*<a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="Categories" asp-action="Details" asp-route-id=@item.Id>Detay</a>*@

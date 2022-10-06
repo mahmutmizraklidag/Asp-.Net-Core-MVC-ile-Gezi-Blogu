@@ -1,4 +1,5 @@
 ﻿using GeziBlogu.Data;
+using GeziBlogu.Entities;
 using GeziBlogu.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,39 @@ namespace GeziBlogu.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var model = await _context.Posts.Where(p => p.IsActive && p.IsHome).ToListAsync();
+            var model = new HomePageViewModel();
+            model.Posts = await _context.Posts.Where(p =>  p.IsHome).ToListAsync();
+            model.Sliders=await _context.Sliders.ToListAsync();
             return View(model);
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+        [Route("iletisim")]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        [Route("iletisim"),HttpPost]
+        public async Task<IActionResult> ContactUsAsync(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _context.Contacts.AddAsync(contact);
+                    await _context.SaveChangesAsync();
+                    TempData["Mesaj"] = "<div class='alert alert-success'>Mesajınız iletildi.Teşekkürler...</div>";
+                    return RedirectToAction(nameof(ContactUs));
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Hata Oluştu!");
+                    
+                }
+            }
             return View();
         }
 

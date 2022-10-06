@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - GeziBlogu</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/AdminLogin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GeziBlogu.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -28,6 +27,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">Kategori Yönetimi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Sliders" asp-action="Index">Slider Yönetimi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Contacts" asp-action="Index">İletişim Form Yönetimi</a>
                         </li>
                     </ul>
                 </div>
